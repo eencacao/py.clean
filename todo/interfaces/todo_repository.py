@@ -1,4 +1,4 @@
-from todo.domain.todo import Task
+from todo.entities.todo import Task
 from todo.infrastructure.database import InMemoryDatabase
 
 

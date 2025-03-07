@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from todo.usecases.todo_usecase import TodoUseCase
-from todo.adapters.todo_repository import TodoRepository
+from todo.interfaces.todo_repository import TodoRepository
 from todo.infrastructure.database import InMemoryDatabase
 
 app = FastAPI()

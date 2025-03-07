@@ -1,6 +1,6 @@
 from typing import List
-from todo.domain.todo import Task
-from todo.adapters.todo_repository import TodoRepository
+from todo.entities.todo import Task
+from todo.interfaces.todo_repository import TodoRepository
 from datetime import datetime
 
 
