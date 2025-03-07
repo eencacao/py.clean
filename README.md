@@ -12,11 +12,11 @@ An application with the following layers:
 ```
 ./
 │── todo/                       # Application package
-│   │── domain/                 # Entities
+│   │── entities/               # Domain models
 │   │   ├── todo.py
 │   │── usecases/               # Application Logic
 │   │   ├── todo_usecase.py
-│   │── adapters/               # Interfaces (Repository, Controllers)
+│   │── interfaces/             # Adapters (Repository, Controllers)
 │   │   ├── todo_repository.py
 │   │── infrastructure/         # Frameworks & Database
 │   │   ├── database.py
