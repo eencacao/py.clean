@@ -47,3 +47,8 @@ def update_todo(todo_id: int, body: UpdateBody):
 def delete_todo(todo_id: int):
     if not _uc.delete(todo_id):
         raise HTTPException(404, detail="not found")
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("todo.main:app", host="0.0.0.0", port=8080)

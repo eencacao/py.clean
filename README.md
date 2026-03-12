@@ -43,8 +43,8 @@ todo/
 
 ```bash
 pip install -r requirements.txt
-uvicorn todo.main:app --reload
+uvicorn todo.main:app --port 8080 --reload
 ```
 
-Server runs on `http://localhost:8000`.  
-Interactive docs: `http://localhost:8000/docs`
+Server runs on `http://localhost:8080`.  
+Interactive docs: `http://localhost:8080/docs`
