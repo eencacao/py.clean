@@ -1,25 +1,27 @@
-from todo.entities.todo import Task
-from typing import Dict, List
+from typing import Dict, List, Optional
+from todo.entities.todo import Todo
 
 
 class InMemoryDatabase:
     def __init__(self):
-        self.tasks: Dict[int, Task] = {}
-        self.current_id = 1
+        self._store: Dict[int, Todo] = {}
+        self._counter: int = 0
 
-    def get_next_id(self) -> int:
-        task_id = self.current_id
-        self.current_id += 1
-        return task_id
+    def next_id(self) -> int:
+        self._counter += 1
+        return self._counter
 
-    def save(self, task: Task):
-        self.tasks[task.id] = task
+    def save(self, todo: Todo) -> None:
+        self._store[todo.id] = todo
 
-    def get_all(self) -> List[Task]:
-        return list(self.tasks.values())
+    def get_all(self) -> List[Todo]:
+        return list(self._store.values())
 
-    def delete(self, task_id: int) -> bool:
-        if task_id in self.tasks:
-            del self.tasks[task_id]
-            return True
-        return False
+    def get_by_id(self, todo_id: int) -> Optional[Todo]:
+        return self._store.get(todo_id)
+
+    def delete(self, todo_id: int) -> bool:
+        if todo_id not in self._store:
+            return False
+        del self._store[todo_id]
+        return True

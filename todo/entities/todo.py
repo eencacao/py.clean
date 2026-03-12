@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 @dataclass
-class Task:
+class Todo:
     id: int
     title: str
     completed: bool

@@ -1,19 +1,23 @@
-from todo.entities.todo import Task
+from typing import List, Optional
+from todo.entities.todo import Todo
 from todo.infrastructure.database import InMemoryDatabase
 
 
 class TodoRepository:
     def __init__(self, db: InMemoryDatabase):
-        self.db = db
+        self._db = db
 
-    def get_next_id(self) -> int:
-        return self.db.get_next_id()
+    def next_id(self) -> int:
+        return self._db.next_id()
 
-    def save(self, task: Task):
-        self.db.save(task)
+    def save(self, todo: Todo) -> None:
+        self._db.save(todo)
 
-    def get_all(self):
-        return self.db.get_all()
+    def get_all(self) -> List[Todo]:
+        return self._db.get_all()
 
-    def delete(self, task_id: int) -> bool:
-        return self.db.delete(task_id)
+    def get_by_id(self, todo_id: int) -> Optional[Todo]:
+        return self._db.get_by_id(todo_id)
+
+    def delete(self, todo_id: int) -> bool:
+        return self._db.delete(todo_id)

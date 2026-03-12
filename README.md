@@ -1,50 +1,50 @@
-# CLEAN
+# Todo API — Python Clean Architecture
 
-### Exercise: To-Do List API
+A RESTful To-Do list API built with Python and FastAPI,
+following Clean Architecture.
 
-An application with the following layers:  
-- Entities (Domain Layer) → Pure business logic, independent of frameworks.   
-- Use Cases (Application Layer) → Orchestrates business logic and defines application behavior.   
-- Adapters (Interface Layer) → Controllers, presenters, and UI elements.   
-- Infrastructure (Data Layer) → External services (database, APIs, frameworks).     
-    
+## Architecture
 
 ```
-./
-│── todo/                       # Application package
-│   │── entities/               # Domain models
-│   │   ├── todo.py
-│   │── usecases/               # Application Logic
-│   │   ├── todo_usecase.py
-│   │── interfaces/             # Adapters (Repository, Controllers)
-│   │   ├── todo_repository.py
-│   │── infrastructure/         # Frameworks & Database
-│   │   ├── database.py
-│   ├── main.py                 # Entry point (FastAPI)
-│── .gitignore
-│── LICENSE
-│── README.md
-└── requirements.txt
+todo/
+├── entities/        Pure domain model (Todo)
+├── interfaces/      Repository contract
+├── usecases/        Business logic (CRUD)
+└── infrastructure/  In-memory database
 ```
-    
-### Requirements
 
-Python >= **3.9**
+## API Endpoints
 
-### Init
+| Method | Endpoint       | Description    |
+|--------|----------------|----------------|
+| GET    | /todos         | List all todos |
+| POST   | /todos         | Create a todo  |
+| GET    | /todos/{id}    | Get by ID      |
+| PUT    | /todos/{id}    | Update a todo  |
+| DELETE | /todos/{id}    | Delete a todo  |
+
+## Todo Object
+
+```json
+{
+  "id": 1,
+  "title": "Buy groceries",
+  "completed": false,
+  "created_at": "2026-03-12T11:00:00Z"
+}
+```
+
+## Requirements
+
+- Python 3.9+
+- `pip install -r requirements.txt`
+
+## Setup & Run
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
 pip install -r requirements.txt
-```
-
-### Run
-
-```bash
 uvicorn todo.main:app --reload
 ```
 
-### Test
-
-`http://127.0.0.1:8000/docs`
+Server runs on `http://localhost:8000`.  
+Interactive docs: `http://localhost:8000/docs`
